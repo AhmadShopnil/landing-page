@@ -5,16 +5,18 @@ import Link from "next/link";
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Order from "@/components/order";
+import Carousel from "@/components/Carousel";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Sample wallet images for the carousel
-  const walletImages = [
-    "/images/img2.webp",
-    "/images/img3.webp",
-    "/images/img2.webp",
-  ];
+  // const walletImages = [
+  //   "/images/img-2.webp",
+  //   "/images/img-3.webp",
+  //   "/images/img-2.webp",
+  //   "/images/img-3.webp",
+  // ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % walletImages.length);
@@ -144,37 +146,8 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="relative">
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <div className="flex overflow-hidden">
-              <div
-                className="flex transition-transform duration-300"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {walletImages.map((img, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <Image
-                      src={img}
-                      alt={`Wallet ${index + 1}`}
-                      width={200}
-                      height={200}
-                      className="mx-auto rounded-lg"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white p-2 shadow-md"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
+          <div className="">
+            <Carousel />
           </div>
         </div>
       </section>
@@ -191,29 +164,19 @@ export default function Home() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 text-[#2E2D2E] font-[500] text-xl leading-6">
-          <div className="rounded-lg bg-white p-4 shadow">
-            <p className="text-center ">
-              সম্পূর্ণ হ্যান্ডমেইড লং ওয়ালেট-টি পাঞ্জাবি-পায়জামা, ক্যাজুয়াল
-              প্যান্টের সাথে অনায়াসে ব্যবহার করা যাবে।
-            </p>
-          </div>
-          <div className="rounded-lg bg-white p-4 shadow">
-            <p className="text-center ">
-              ওয়ালেট-এর আপার এবং লাইনিং-এ শুধুমাত্র র-চামড়া ব্যাবহার করায়
-              দীর্ঘদিন ব্যাবহারে করা যাবে।
-            </p>
-          </div>
-          <div className="rounded-lg bg-white p-4 shadow">
-            <p className="text-center ">
-              ডাবল চেম্বার গেজেট পকেট থাকায় একসাথে ‍দুইটি মোবাইল ক্যারি করতে
-              পারবেন । সেই সাথে চেইন পকেট এবং একাধিক কার্ড হোল্ডার পকেট থাকছেই।
-            </p>
-          </div>
-          <div className="rounded-lg bg-white p-4 shadow">
-            <p className="text-center ">
-              জেনুইন চামড়ার নিশ্চয়তায় থাকছে ৩৬৫ দিনের রিপ্লেসমেন্ট গ্যারান্টি ।
-            </p>
-          </div>
+          {[
+            "সম্পূর্ণ হ্যান্ডমেইড লং ওয়ালেট-টি পাঞ্জাবি-পায়জামা, ক্যাজুয়াল প্যান্টের সাথে অনায়াসে ব্যবহার করা যাবে।",
+            "ওয়ালেট-এর আপার এবং লাইনিং-এ শুধুমাত্র র-চামড়া ব্যাবহার করায় দীর্ঘদিন ব্যাবহারে করা যাবে।",
+            "ডাবল চেম্বার গেজেট পকেট থাকায় একসাথে ‍দুইটি মোবাইল ক্যারি করতে পারবেন । সেই সাথে চেইন পকেট এবং একাধিক কার্ড হোল্ডার পকেট থাকছেই।",
+            "জেনুইন চামড়ার নিশ্চয়তায় থাকছে ৩৬৫ দিনের রিপ্লেসমেন্ট গ্যারান্টি ।",
+          ].map((text, index) => (
+            <div
+              key={index}
+              className="rounded-lg bg-white p-4 shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_2px_2px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.1),0_6px_8px_rgba(0,0,0,0.1),0_8px_16px_rgba(0,0,0,0.1)] max-w-lg mx-auto"
+            >
+              <p className="text-center">{text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
