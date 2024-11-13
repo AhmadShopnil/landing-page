@@ -1,9 +1,27 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Order from "@/components/Order";
 import Carousel from "@/components/Carousel";
+import { useEffect, useRef } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Home() {
+  const orderSectionRef = useRef(null);
+
+  const scrollToOrderSection = () => {
+    orderSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, // Only animate once
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
@@ -20,6 +38,7 @@ export default function Home() {
         {/* Content */}
         <div className="relative max-w-[1150px] mx-auto px-4 py-8 text-center">
           <Image
+            data-aos="fade-down"
             src="/images/logo.png"
             alt="Anon Logo"
             width={150}
@@ -27,25 +46,34 @@ export default function Home() {
             className="mx-auto mb-6 rounded-full bg-white/10 backdrop-blur-sm"
           />
 
-          <div className="mb-7 rounded-2xl border-4 border-white bg-black/80 py-4 backdrop-blur-sm">
+          <div
+            data-aos="fade-right"
+            className="mb-7 rounded-2xl border-4 border-white bg-black/80 py-4 backdrop-blur-sm"
+          >
             <h1 className="text-[32px] font-bold leading-10">
               দেশিয় পশুর চামড়ায় লং ওয়ালেট ব্যাবহার করুন !
             </h1>
           </div>
 
-          <p className="mb-8 text-2xl font-bold leading-9  rounded-lg backdrop-blur-sm">
+          <p
+            data-aos="fade-left"
+            className="mb-8 text-2xl font-bold leading-9  rounded-lg backdrop-blur-sm"
+          >
             রেক্সিন বা আর্টিফিশিয়াল চামড়ায় অভ্যস্থ না হয়ে দেশিয় পশুর
             প্রসেসকৃত অরিজিনাল চামড়ার ব্র্যান্ড ওয়ালেট সংগ্রহ করুন এ্যানন
             লেদার থেকে।
           </p>
 
-          <button
-            className="text-white text-[32px] font-bold rounded-3xl border-4 border-white 
+          <div data-aos="fade-up">
+            <button
+              onClick={scrollToOrderSection}
+              className="text-white text-[32px] font-bold rounded-3xl border-4 border-white 
           bg-[#037710] px-10 py-4 leading-8  
           shadow-lg hover:scale-90 transition-transform duration-300 "
-          >
-            অর্ডার করতে চাই
-          </button>
+            >
+              অর্ডার করতে চাই
+            </button>
+          </div>
         </div>
       </header>
 
@@ -138,8 +166,9 @@ export default function Home() {
       {/* Product Carousel */}
       <section className="bg-[#D5E4E8] px-4 py-8 mt-12">
         <div className="max-w-[1150px] mx-auto ">
-          <div className="flex justify-center ">
+          <div data-aos="fade-up" className="flex justify-center ">
             <button
+              onClick={scrollToOrderSection}
               className="mb-8 text-center text-[32px] leading-8 text-white font-extrabold
            bg-[#FF7400] hover:bg-[#037710] hover:scale-90 transition-transform duration-300 py-5 px-12 drop-shadow-2xl rounded-3xl border-4 border-black "
             >
@@ -182,9 +211,10 @@ export default function Home() {
       </section>
 
       {/* Product Info Section */}
-      <section className="bg-[#D5E4E8] mx-auto px-4 py-8 mt-5">
-        <div className="flex justify-center ">
+      <section className="bg-[#D5E4E8] mx-auto px-4 py-12 mt-5">
+        <div data-aos="fade-up" className="flex justify-center ">
           <button
+            onClick={scrollToOrderSection}
             className="mb-8 text-center text-[32px] text-white font-bold
            bg-[#FF1E00] hover:bg-[#037710] hover:scale-90 transition-transform duration-300 py-4 px-12 drop-shadow-2xl rounded-3xl border-4 border-black leading-8 "
           >
@@ -289,12 +319,15 @@ export default function Home() {
           </div>
         </div>
         <div className="flex justify-center mt-6 ">
-          <button
-            className="mb-8 text-center text-[32px] text-white font-bold
+          <div data-aos="fade-up">
+            <button
+              onClick={scrollToOrderSection}
+              className="text-center text-[32px] text-white font-bold
            bg-[#FF7400] hover:bg-[#037710] hover:scale-90 transition-transform duration-300  py-4 px-8 drop-shadow-2xl rounded-3xl border-4 border-black leading-8 "
-          >
-            স্টক ফুরিয়ে যাবার আগেই অর্ডার করুন
-          </button>
+            >
+              স্টক ফুরিয়ে যাবার আগেই অর্ডার করুন
+            </button>
+          </div>
         </div>
       </section>
 
@@ -330,6 +363,7 @@ export default function Home() {
 
       {/* Order section */}
       <div
+        ref={orderSectionRef}
         className="max-w-[1150px] mx-auto border-2 border-black rounded-3xl shadow-2xl mt-44
        p-8 bg-[#F8F6F8]"
         style={{ boxShadow: "0px 0px 6px 2px rgba(0, 0, 0, 0.2)" }}
