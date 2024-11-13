@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const walletImages = [
-    "/images/img-2.webp",
-    "/images/img-3.webp",
-    "/images/img-2.webp",
-    "/images/img-3.webp",
+    "/images/black.webp",
+    "/images/chocolate.webp",
+    "/images/black-2.webp",
+    "/images/chocolate-2.webp",
   ];
 
   const nextSlide = () => {
@@ -27,10 +27,13 @@ export default function Carousel() {
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
-    <div className="relative w-full  mx-auto bg-[#D5E4E8] border border-black rounded-2xl p-4">
+    <div
+      className="relative w-full mx-auto bg-[#D5E4E8] border border-black rounded-2xl p-4"
+      style={{ boxShadow: "0px 0px 6px 2px rgba(0, 0, 0, 0.5)" }}
+    >
       <div className="overflow-hidden">
         <div
           className="flex gap-5 transition-transform duration-500 ease-in-out"
@@ -39,8 +42,6 @@ export default function Carousel() {
           {walletImages.map((img, index) => (
             <div key={index} className="w-1/3 flex-shrink-0 px-2 ">
               <div className="relative h-[350px]">
-                {" "}
-                {/* Fixed height for image wrapper */}
                 <Image
                   src={img}
                   alt={`Wallet ${index + 1}`}

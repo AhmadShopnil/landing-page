@@ -1,33 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
 import Order from "@/components/order";
 import Carousel from "@/components/Carousel";
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Sample wallet images for the carousel
-  // const walletImages = [
-  //   "/images/img-2.webp",
-  //   "/images/img-3.webp",
-  //   "/images/img-2.webp",
-  //   "/images/img-3.webp",
-  // ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % walletImages.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + walletImages.length) % walletImages.length
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
@@ -65,8 +41,8 @@ export default function Home() {
 
           <button
             className="text-white text-[32px] font-bold rounded-3xl border-4 border-white 
-          bg-[#037710] px-10 py-4 leading-8 hover:bg-[#025b0c] transition-colors
-          shadow-lg hover:shadow-xl active:transform active:scale-95"
+          bg-[#037710] px-10 py-4 leading-8  
+          shadow-lg hover:scale-90 transition-transform duration-300 "
           >
             অর্ডার করতে চাই
           </button>
@@ -78,12 +54,12 @@ export default function Home() {
         <div className="flex justify-center ">
           <span
             className="mb-8 text-center text-3xl text-white font-bold
-           bg-black py-4 px-6 drop-shadow-2xl rounded-lg leading-9 "
+           bg-black py-4 px-6 drop-shadow-2xl rounded-xl leading-9 "
           >
             ডাবল চেম্বার ওয়ালেট- LW104
           </span>
         </div>
-        <div className="aspect-video w-full overflow-hidden rounded-lg bg-gray-200">
+        <div className="aspect-video w-full overflow-hidden  bg-gray-200">
           <iframe
             src="https://www.youtube.com/embed/kyYBA1fhcHI?si=L6TKqxv3pbEyMjCw"
             allowFullScreen
@@ -93,9 +69,9 @@ export default function Home() {
         </div>
       </section>
       {/* way of find original lather */}
-      <section className="max-w-[1150px] px-4  mx-auto rounded-lg border-2 border-black">
+      <section className="max-w-[1150px] px-3  mx-auto rounded-lg border-2 border-black">
         <div
-          className="rounded-md text-black text-[26px] bg-[#8395A4] py-3 my-7  border-2 border-black 
+          className="rounded-md text-black text-[26px] bg-[#8395A4] py-3 my-7  border-4 border-black 
          text-center leading-8"
         >
           <span className="text-white text-center font-extrabold">
@@ -106,29 +82,54 @@ export default function Home() {
 
         <div className="pb-2 text-[#2E2D2E] font-[500] text-xl leading-8">
           <div className="flex gap-2">
-            <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-            <p className=" ">
-              প্রাকৃতিকভাবেই চামড়ায় থাকে ফাইবার। আর ঠিক সে কারণেই চামড়ার তৈরি
-              পন্য অনেক দিনেই সেই ফাইবার দেখা যায়। কিন্তু কৃত্রিম চামড়া বা
-              বেন্ডিনের তৈরি পন্য তেমনটি দেখা যায় না।
+            <p className="space-x-2 ">
+              <Image
+                src="/images/check.svg"
+                alt="check"
+                width={20}
+                height={20}
+                className="inline"
+              />
+
+              <span className="">
+                প্রাকৃতিকভাবেই চামড়ায় থাকে ফাইবার। আর ঠিক সে কারণেই চামড়ার
+                তৈরি পন্য অনেক দিনেই সেই ফাইবার দেখা যায়। কিন্তু কৃত্রিম চামড়া
+                বা বেন্ডিনের তৈরি পন্য তেমনটি দেখা যায় না।
+              </span>
             </p>
           </div>
 
           <div className="flex gap-2">
-            <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-            <p className=" ">
-              কৃত্রিম চামড়া বা বেন্ডিনে সাধারণত কোন না কোন কাপড় ব্যবহার করে
-              তার উপর পলিমার দিয়ে কোটিং করা হয়ে থাকে। আর এ জন্য কৃত্রিম
-              চামড়ায় তৈরি পন্যটি গুটানোলেই কাপড়ের আস্তরণ পাওয়া যায়। কিন্তু
-              চামড়ার তৈরি পন্য এমন কিছু দেখা যায় না।
+            <p className="space-x-2 ">
+              <Image
+                src="/images/check.svg"
+                alt="check"
+                width={20}
+                height={20}
+                className="inline"
+              />
+              <span>
+                কৃত্রিম চামড়া বা বেন্ডিনে সাধারণত কোন না কোন কাপড় ব্যবহার করে
+                তার উপর পলিমার দিয়ে কোটিং করা হয়ে থাকে। আর এ জন্য কৃত্রিম
+                চামড়ায় তৈরি পন্যটি গুটানোলেই কাপড়ের আস্তরণ পাওয়া যায়।
+                কিন্তু চামড়ার তৈরি পন্য এমন কিছু দেখা যায় না।
+              </span>
             </p>
           </div>
 
           <div className="flex  gap-2">
-            <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-            <p className=" ">
-              ফায়ার টেস্ট অথবাৎ আগুনে পোড়ালে সহজে জ্বলবে না, গলবে না থাকবে
-              অক্ষত
+            <p className="space-x-2 ">
+              <Image
+                src="/images/check.svg"
+                alt="check"
+                width={20}
+                height={20}
+                className="inline"
+              />
+              <span>
+                ফায়ার টেস্ট অথবাৎ আগুনে পোড়ালে সহজে জ্বলবে না, গলবে না থাকবে
+                অক্ষত
+              </span>
             </p>
           </div>
         </div>
@@ -138,12 +139,12 @@ export default function Home() {
       <section className="bg-[#D5E4E8] px-4 py-8 mt-12">
         <div className="max-w-[1150px] mx-auto ">
           <div className="flex justify-center ">
-            <span
+            <button
               className="mb-8 text-center text-[32px] leading-8 text-white font-extrabold
-           bg-[#FF7400] py-5 px-12 drop-shadow-2xl rounded-3xl border-4 border-black "
+           bg-[#FF7400] hover:bg-[#037710] hover:scale-90 transition-transform duration-300 py-5 px-12 drop-shadow-2xl rounded-3xl border-4 border-black "
             >
               চামড়ার লং ওয়ালেট অর্ডার করুন
-            </span>
+            </button>
           </div>
 
           <div className="">
@@ -183,12 +184,12 @@ export default function Home() {
       {/* Product Info Section */}
       <section className="bg-[#D5E4E8] mx-auto px-4 py-8 mt-5">
         <div className="flex justify-center ">
-          <span
+          <button
             className="mb-8 text-center text-[32px] text-white font-bold
-           bg-[#FF1E00] py-4 px-12 drop-shadow-2xl rounded-3xl border-4 border-black leading-8 "
+           bg-[#FF1E00] hover:bg-[#037710] hover:scale-90 transition-transform duration-300 py-4 px-12 drop-shadow-2xl rounded-3xl border-4 border-black leading-8 "
           >
             শেষ হবার আগেই অর্ডার করুন
-          </span>
+          </button>
         </div>
         <div className="flex justify-center ">
           <h2
@@ -199,39 +200,83 @@ export default function Home() {
             <span className="text-white"> থেকে কেন অর্ডার করবেন?</span>
           </h2>
         </div>
-        <div className="max-w-[1150px] mx-auto border-2 border-black rounded-lg shadow-2xl">
-          <div className="flex px-3 py-8">
-            <div className=" w-3/5 font-[500] text-xl leading-9">
-              <div className="flex gap-2">
-                <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-                <p className=" ">চামড়া নয় প্রমাণে ক্যাশ ব্যাক গ্যারান্টি!</p>
-              </div>
-              <div className="flex gap-2">
-                <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-                <p className=" ">পার্সেল হাতে পেয়ে টাকা পরিশোধের সুবিধা।</p>
-              </div>
-              <div className="flex gap-2">
-                <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-                <p className=" ">সমগ্র বাংলাদেশে ডেলিভারি সার্ভিস।</p>
-              </div>
-              <div className="flex gap-2">
-                <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-                <p className=" ">
+        <div
+          className="max-w-[1150px] mx-auto border-2 border-black rounded-lg shadow-2xl "
+          style={{ boxShadow: "0px 0px 6px 2px rgba(0, 0, 0, 0.3)" }}
+        >
+          <div className="flex px-3 py-8 ">
+            <div className=" pr-12  w-3/5 font-[500] text-xl leading-9">
+              <p className="space-x-2 ">
+                <Image
+                  src="/images/check.svg"
+                  alt="check"
+                  width={20}
+                  height={20}
+                  className="inline"
+                />
+                <span>চামড়া নয় প্রমাণে ক্যাশ ব্যাক গ্যারান্টি!</span>
+              </p>
+
+              <p className=" space-x-2">
+                <Image
+                  src="/images/check.svg"
+                  alt="check"
+                  width={20}
+                  height={20}
+                  className="inline"
+                />
+                <span>পার্সেল হাতে পেয়ে টাকা পরিশোধের সুবিধা।</span>
+              </p>
+
+              <p className="space-x-2 ">
+                <Image
+                  src="/images/check.svg"
+                  alt="check"
+                  width={20}
+                  height={20}
+                  className="inline"
+                />
+                <span>সমগ্র বাংলাদেশে ডেলিভারি সার্ভিস।</span>
+              </p>
+
+              <p className="space-x-2 ">
+                <Image
+                  src="/images/check.svg"
+                  alt="check"
+                  width={20}
+                  height={20}
+                  className="inline"
+                />
+                <span>
                   সরাসরি দেখার পর পছন্দ না হলে শুধুমাত্র কুরিয়ার চার্জ প্রদান
                   সাপেক্ষে ফেরতযোগ্য।
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-                <p className="">
+                </span>
+              </p>
+
+              <p className="space-x-2">
+                <Image
+                  src="/images/check.svg"
+                  alt="check"
+                  width={20}
+                  height={20}
+                  className="inline"
+                />
+                <span>
                   বড় ধরনের শো-রুম সেই সাথে অনেক বেশি কর্মচারি খরচ না থাকায়
                   কোয়লিটি লং ওয়ালেট পাচ্ছেন বিশেষ মূল্যছাঁড়ে!
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <Check className="h-5 w-5 flex-shrink-0 rounded-sm bg-green-500 p-0.5 mt-1 " />
-                <p className=" ">৩৬৫ দিনের রিপ্লেসমেন্ট গ্যারান্টি!</p>
-              </div>
+                </span>
+              </p>
+
+              <p className="space-x-2 ">
+                <Image
+                  src="/images/check.svg"
+                  alt="check"
+                  width={20}
+                  height={20}
+                  className="inline"
+                />
+                <span>৩৬৫ দিনের রিপ্লেসমেন্ট গ্যারান্টি!</span>
+              </p>
             </div>
             <div className="relative w-2/5 h-80 flex items-center justify-center">
               <Image
@@ -244,12 +289,12 @@ export default function Home() {
           </div>
         </div>
         <div className="flex justify-center mt-6 ">
-          <span
+          <button
             className="mb-8 text-center text-[32px] text-white font-bold
-           bg-[#FF7400] py-4 px-8 drop-shadow-2xl rounded-3xl border-4 border-black leading-8 "
+           bg-[#FF7400] hover:bg-[#037710] hover:scale-90 transition-transform duration-300  py-4 px-8 drop-shadow-2xl rounded-3xl border-4 border-black leading-8 "
           >
             স্টক ফুরিয়ে যাবার আগেই অর্ডার করুন
-          </span>
+          </button>
         </div>
       </section>
 
@@ -261,13 +306,19 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 mt-4 text-[#FF0000] text-[26px] font-bold leading-8">
-          <div className="rounded-lg bg-[#DCD6E7] py-14 text-center shadow-2xl">
+        <div className="grid gap-6 md:grid-cols-2 mt-4 text-[#FF0000] text-[26px] font-bold leading-8">
+          <div
+            className="rounded-lg bg-[#DCD6E7] py-14 text-center "
+            style={{ boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)" }}
+          >
             <h4>
               রেগুলার মূল্যঃ <span className="text-black">২৫৯৫</span> টাকা
             </h4>
           </div>
-          <div className="rounded-lg bg-[#DCD6E7] py-14 text-center shadow-2xl">
+          <div
+            className="rounded-lg bg-[#DCD6E7] py-14 text-center "
+            style={{ boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.5)" }}
+          >
             <h4>
               অফারের মূল্যঃ <span className="text-black">১১৫০</span> টাকা
             </h4>
@@ -321,7 +372,11 @@ export default function Home() {
       </section> */}
 
       {/* Order section */}
-      <div className="max-w-[1150px] mx-auto border-2 border-black rounded-3xl shadow-2xl mt-24 p-8 bg-[#F8F6F8]">
+      <div
+        className="max-w-[1150px] mx-auto border-2 border-black rounded-3xl shadow-2xl mt-24
+       p-8 bg-[#F8F6F8]"
+        style={{ boxShadow: "0px 0px 6px 2px rgba(0, 0, 0, 0.2)" }}
+      >
         <Order />
       </div>
 

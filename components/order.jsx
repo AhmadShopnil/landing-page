@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-import { CircleCheck, LockKeyhole } from "lucide-react";
+import { CircleCheck, LockKeyhole, Play } from "lucide-react";
 
 export default function Order() {
   const [selectedVariant, setSelectedVariant] = useState("black");
@@ -38,6 +38,7 @@ export default function Order() {
         <h2
           className="rounded-2xl border-4 border-black bg-[#007F0A] py-3 text-center
         text-[32px] font-bold text-white leading-8"
+          style={{ boxShadow: "0px 0px 6px 2px rgba(0, 0, 0, 0.3)" }}
         >
           পছন্দের কালার অর্ডার করুন
         </h2>
@@ -80,10 +81,11 @@ export default function Order() {
                 value="black"
                 checked={selectedVariant === "black"}
                 onChange={(e) => setSelectedVariant(e.target.value)}
-                className="h-4 w-4 border-gray-300 text-[#F16334] focus:ring-[#F16334]"
+                className="h-4 w-4 border-gray-300 accent-[#F16334]"
               />
+
               <Image
-                src="/images/img-2.webp"
+                src="/images/black.webp"
                 alt="Black Wallet"
                 width={80}
                 height={80}
@@ -115,7 +117,8 @@ export default function Order() {
                     />
                     <button
                       onClick={() => handleQuantityChange("black", 1)}
-                      className="flex h-8 w-8 items-center justify-center rounded-r border border-l-0 border-gray-300 bg-gray-50 text-gray-600 hover:bg-gray-100"
+                      className="flex h-8 w-8 items-center justify-center rounded-r border border-l-0 border-gray-300
+                       bg-gray-50 text-gray-600 hover:bg-gray-100"
                     >
                       +
                     </button>
@@ -143,10 +146,10 @@ export default function Order() {
                 value="chocolate"
                 checked={selectedVariant === "chocolate"}
                 onChange={(e) => setSelectedVariant(e.target.value)}
-                className="h-4 w-4 border-gray-300 text-[#F16334] focus:ring-[#F16334]"
+                className="h-4 w-4 border-gray-300 accent-[#F16334]"
               />
               <Image
-                src="/images/img-3.webp"
+                src="/images/chocolate.webp"
                 alt="Chocolate Wallet"
                 width={80}
                 height={80}
@@ -196,7 +199,7 @@ export default function Order() {
         </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2 text-[#333333]">
         {/* Billing Details */}
         <div>
           <h3 className="mb-5 font-semibold text-xl  text-[#333333]">
@@ -205,7 +208,8 @@ export default function Order() {
           <div className="space-y-4">
             <div>
               <label className="mb-1 block text-sm text-gray-600">
-                আপনার নাম *
+                আপনার নাম
+                <span className="text-[#E2260A] ml-1 text-lg ">*</span>
               </label>
               <input
                 type="text"
@@ -214,8 +218,9 @@ export default function Order() {
               />
             </div>
             <div>
-              <label className="mb-1 block text-sm text-gray-600">
-                মোবাইল নাম্বার *
+              <label className="mb-1 block text-sm text-gray-600  ">
+                মোবাইল নাম্বার
+                <span className="text-[#E2260A] ml-1 text-lg ">*</span>
               </label>
               <input
                 type="tel"
@@ -225,26 +230,51 @@ export default function Order() {
             </div>
             <div>
               <label className="mb-1 block text-sm text-gray-600">
-                ঠিকানা লিখুন *
+                ঠিকানা লিখুন
+                <span className="text-[#E2260A] ml-1 text-lg ">*</span>
               </label>
-              <textarea
+              <input
+                type="text"
                 className="w-full rounded border border-gray-300 p-2 text-sm"
-                rows={3}
                 required
-              ></textarea>
+              ></input>
             </div>
             <div>
-              <label className="mb-1 block text-sm text-gray-600">
-                District *
-              </label>
-              <select className="w-full rounded border border-gray-300 p-2 text-sm">
-                <option>Bangladesh</option>
-              </select>
+              <p className="text-[13px] ">Country / Region</p>
+              <p className="text-[15px] font-bold">Bangladesh</p>
             </div>
-            <div className="p-4 bg-gray-100 rounded-lg">
-              <h4 className="font-medium mb-2">Selected Product:</h4>
-              <p>ANON Leather Long Wallet LW104 ({selectedVariant})</p>
-              <p>Quantity: {quantities[selectedVariant]}</p>
+
+            {/* inside/ outside dhaka */}
+            <div className="mt-4">
+              <h4 className="mb-2 font-semibold text-xl  text-[#333333]">
+                SHIPPING
+              </h4>
+              <div className="space-y-2 border divide-y">
+                <label className="flex items-center gap-2 px-4 pt-3 text-[15px]">
+                  <input
+                    type="radio"
+                    name="shipping"
+                    value="inside"
+                    checked={shippingMethod === "inside"}
+                    onChange={(e) => setShippingMethod(e.target.value)}
+                    className="h-4 w-4 border-gray-300 accent-[#F16334]"
+                  />
+                  <span>Inside Dhaka</span>
+                  <span className="ml-auto font-bold">100.00৳</span>
+                </label>
+                <label className="flex items-center gap-2 px-4 pt-3 pb-3 text-[15px]">
+                  <input
+                    type="radio"
+                    name="shipping"
+                    value="outside"
+                    checked={shippingMethod === "outside"}
+                    onChange={(e) => setShippingMethod(e.target.value)}
+                    className="h-4 w-4 border-gray-300 accent-[#F16334]"
+                  />
+                  <span>Outside Dhaka</span>
+                  <span className="ml-auto font-bold">60.00৳</span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -257,26 +287,31 @@ export default function Order() {
               <span className="text-sm font-medium">Product</span>
               <span className="text-sm font-medium">Subtotal</span>
             </div>
-            <div className="space-y-2">
-              {selectedVariant === "black" && (
-                <div className="flex justify-between text-sm">
-                  <span>
-                    ANON Leather Long Wallet LW104 (Black) × {quantities.black}
-                  </span>
-                  <span>{(price * quantities.black).toFixed(2)}৳</span>
+            <div className=" divide-y">
+              <div className="flex justify-between text-sm gap-3 py-2">
+                <div className="flex gap-4">
+                  <Image
+                    src={`/images/${selectedVariant}.webp`}
+                    alt="Black Wallet"
+                    width={50}
+                    height={50}
+                    className="rounded-lg border border-gray-200"
+                  />
+                  <div>
+                    <p>ANON Leather Long Wallet LW104 </p>
+                    <p className="capitalize ">({selectedVariant})</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <span>×</span>
+                    <span>{quantities.black}</span>
+                  </div>
                 </div>
-              )}
-              {selectedVariant === "chocolate" && (
-                <div className="flex justify-between text-sm">
-                  <span>
-                    ANON Leather Long Wallet LW104 (Chocolate) ×{" "}
-                    {quantities.chocolate}
-                  </span>
-                  <span>{(price * quantities.chocolate).toFixed(2)}৳</span>
-                </div>
-              )}
 
-              <div className="flex justify-between text-sm font-medium">
+                {/* cost */}
+                <span>{(price * quantities.black).toFixed(2)}৳</span>
+              </div>
+
+              <div className="flex justify-between text-sm font-medium py-2">
                 <span>Subtotal</span>
                 <span>
                   {(price * (quantities.black + quantities.chocolate)).toFixed(
@@ -285,52 +320,29 @@ export default function Order() {
                   ৳
                 </span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-sm py-2">
                 <span>Shipping</span>
                 <span>{shippingRates[shippingMethod].toFixed(2)}৳</span>
               </div>
-              <div className="flex justify-between text-sm font-bold">
+              <div className="flex justify-between text-sm font-bold py-2">
                 <span>Total</span>
                 <span>{total.toFixed(2)}৳</span>
               </div>
+              <h4 className=" pt-4 pb-2 text-[#F17248] flex items-center gap-2">
+                <Play size={10} color="#F17146" />
+                Have a coupon?
+              </h4>
             </div>
           </div>
 
           {/* Shipping Method */}
-          <div className="mt-4">
-            <h4 className="mb-2 text-sm font-medium">SHIPPING</h4>
-            <div className="space-y-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="shipping"
-                  value="inside"
-                  checked={shippingMethod === "inside"}
-                  onChange={(e) => setShippingMethod(e.target.value)}
-                />
-                <span className="text-sm">Inside Dhaka</span>
-                <span className="ml-auto text-sm">150.00৳</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="shipping"
-                  value="outside"
-                  checked={shippingMethod === "outside"}
-                  onChange={(e) => setShippingMethod(e.target.value)}
-                />
-                <span className="text-sm">Outside Dhaka</span>
-                <span className="ml-auto text-sm">80.00৳</span>
-              </label>
-            </div>
-          </div>
 
           <div className="mt-6">
             <p className="mb-4 text-sm text-gray-600">
               Pay with cash upon delivery.
             </p>
             <button
-              className="w-full rounded bg-[#F17146] py-4 text-center text-white flex justify-center gap-2
+              className="w-full rounded bg-[#F17248] hover:bg-[#C65F3D] transition-colors duration-100 py-4 text-center text-white flex justify-center gap-2
              "
             >
               <LockKeyhole size={20} color="#ffff" strokeWidth={1.75} />
