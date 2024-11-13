@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Order from "@/components/order";
+import Order from "@/components/Order";
 import Carousel from "@/components/Carousel";
 
 export default function Home() {
@@ -327,53 +327,10 @@ export default function Home() {
       </section>
 
       {/* Order Form Section */}
-      {/* <section className="container mx-auto px-4 py-8">
-        <div className="rounded-lg bg-white p-6 shadow">
-          <h3 className="mb-6 text-center text-xl font-bold text-green-600">
-            সম্পূর্ণ অর্ডার করতে চাই
-          </h3>
-          <form className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="mb-1 block text-sm font-medium">নাম</label>
-                <input
-                  type="text"
-                  className="w-full rounded-md border border-gray-300 p-2"
-                  placeholder="আপনার নাম"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium">
-                  ফোন নাম্বার
-                </label>
-                <input
-                  type="tel"
-                  className="w-full rounded-md border border-gray-300 p-2"
-                  placeholder="আপনার ফোন নাম্বার"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium">ঠিকানা</label>
-              <textarea
-                className="w-full rounded-md border border-gray-300 p-2"
-                rows={3}
-                placeholder="আপনার সম্পূর্ণ ঠিকানা"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-md bg-orange-500 py-3 text-white hover:bg-orange-600"
-            >
-              অর্ডার কনফার্ম করুন
-            </button>
-          </form>
-        </div>
-      </section> */}
 
       {/* Order section */}
       <div
-        className="max-w-[1150px] mx-auto border-2 border-black rounded-3xl shadow-2xl mt-24
+        className="max-w-[1150px] mx-auto border-2 border-black rounded-3xl shadow-2xl mt-44
        p-8 bg-[#F8F6F8]"
         style={{ boxShadow: "0px 0px 6px 2px rgba(0, 0, 0, 0.2)" }}
       >
