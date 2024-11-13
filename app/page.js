@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <header className="relative min-h-screen text-white">
+      <header className="relative  text-white">
         {/* Background Image with proper styling */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -36,7 +36,7 @@ export default function Home() {
         />
 
         {/* Content */}
-        <div className="relative max-w-[1150px] mx-auto px-4 py-8 text-center">
+        <div className="relative max-w-[1150px] mx-auto px-4 pt-10 pb-12 text-center">
           <Image
             data-aos="fade-down"
             src="/images/logo.png"
